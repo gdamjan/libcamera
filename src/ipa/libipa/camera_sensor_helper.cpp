@@ -632,8 +632,15 @@ class CameraSensorHelperImx462 : public CameraSensorHelperImx290
 };
 REGISTER_CAMERA_SENSOR_HELPER("imx462", CameraSensorHelperImx462)
 
-class CameraSensorHelperImx471 : public CameraSensorHelperImx290
+class CameraSensorHelperImx471 : public CameraSensorHelper
 {
+public:
+        CameraSensorHelperImx471()
+        {
+                /* Assumptions by gdamjan */
+                blackLevel_ = 3840;
+                gain_ = AnalogueGainExp{ 1.0, expGainDb(0.3) };
+        }
 };
 REGISTER_CAMERA_SENSOR_HELPER("imx471", CameraSensorHelperImx471)
 
